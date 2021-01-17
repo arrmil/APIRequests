@@ -99,10 +99,10 @@
 			children = (
 				F3D366BE25B3846C00B115C1 /* APIRequestsApp.swift */,
 				F3D366C025B3846C00B115C1 /* ContentView.swift */,
+				F3D366EC25B3849E00B115C1 /* Data.swift */,
 				F3D366C225B3847200B115C1 /* Assets.xcassets */,
 				F3D366C725B3847200B115C1 /* Info.plist */,
 				F3D366C425B3847200B115C1 /* Preview Content */,
-				F3D366EC25B3849E00B115C1 /* Data.swift */,
 			);
 			path = APIRequests;
 			sourceTree = "<group>";
