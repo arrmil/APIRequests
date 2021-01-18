@@ -11,9 +11,9 @@ struct ContentView: View {
     @State var channels: [Programme] = []
     
     var body: some View {
-        List(channels, id: \.self) { channel in
-            if(channel.title_original.count > 0) {
-                Text(channel.title_original)
+        List(channels) { channel in
+            if(channel.title.count > 0) {
+                Text(channel.title)
             }
         }
         .onAppear {
