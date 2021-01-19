@@ -16,7 +16,7 @@ struct ContentView: View {
                 ForEach(api.programme) { program in
                     VStack {
                         if(program.title_original != "") {
-                            Text(program.title_original)
+                            Text(program.title_original + ": \(program.year)")
                         }
                     }
                 }

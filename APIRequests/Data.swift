@@ -25,6 +25,7 @@ struct Programme: Codable, Hashable, Identifiable {
     let id = UUID()
     var title: String
     var title_original: String
+    var year: Int
 }
 
 
