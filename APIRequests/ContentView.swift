@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var channels: [Programme] = []
+    @ObservedObject var api = API()
     
     var body: some View {
-        List(channels) { channel in
-            if(channel.title.count > 0) {
-                Text(channel.title)
-            }
-        }
-        .onAppear {
-            API().getChannels{ channels in
-                self.channels = channels
-
+        NavigationView {
+            ScrollView {
+                ForEach(api.programme) { program in
+                    VStack {
+                        if(program.title_original != "") {
+                            Text(program.title_original)
+                        }
+                    }
+                }
             }
         }
     }

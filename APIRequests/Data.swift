@@ -28,8 +28,11 @@ struct Programme: Codable, Hashable, Identifiable {
 }
 
 
-class API {
-    func getChannels(completion: @escaping ([Programme]) -> ()) {
+class API: ObservableObject {
+    
+    @Published var programme = [Programme]()
+    
+    init() {
         guard let url = URL(string: "https://www.tv24.lt/programme/listing/none/18-01-2021?filter=channel&subslug=tv3-2") else {
             print("URL NOT FOUND")
             return
@@ -38,9 +41,23 @@ class API {
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             let channel = try!JSONDecoder().decode(Channel.self, from: data!)
             DispatchQueue.main.async {
-                completion(channel.schedule.programme)
+                self.programme = channel.schedule.programme
             }
         }
         .resume()
     }
 }
+//    func getChannels(completion: @escaping ([Programme]) -> ()) {
+//        guard let url = URL(string: "https://www.tv24.lt/programme/listing/none/18-01-2021?filter=channel&subslug=tv3-2") else {
+//            print("URL NOT FOUND")
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: url) { (data, _, _) in
+//            let channel = try!JSONDecoder().decode(Channel.self, from: data!)
+//            DispatchQueue.main.async {
+//                completion(channel.schedule.programme)
+//            }
+//        }
+//        .resume()
+//    }
