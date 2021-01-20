@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F3909AF825B5ED1D0066B1D0 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3909AF725B5ED1D0066B1D0 /* MainPage.swift */; };
+		F3909B0B25B8AD060066B1D0 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3909B0A25B8AD060066B1D0 /* Movies.swift */; };
 		F3D366BF25B3846C00B115C1 /* APIRequestsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D366BE25B3846C00B115C1 /* APIRequestsApp.swift */; };
 		F3D366C125B3846C00B115C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D366C025B3846C00B115C1 /* ContentView.swift */; };
 		F3D366C325B3847200B115C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3D366C225B3847200B115C1 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		F3909AF725B5ED1D0066B1D0 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
+		F3909B0A25B8AD060066B1D0 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		F3D366BB25B3846C00B115C1 /* APIRequests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APIRequests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3D366BE25B3846C00B115C1 /* APIRequestsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestsApp.swift; sourceTree = "<group>"; };
 		F3D366C025B3846C00B115C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				F3D366BE25B3846C00B115C1 /* APIRequestsApp.swift */,
 				F3D366EC25B3849E00B115C1 /* Data.swift */,
 				F3D366C025B3846C00B115C1 /* ContentView.swift */,
+				F3909B0A25B8AD060066B1D0 /* Movies.swift */,
 				F3D366C225B3847200B115C1 /* Assets.xcassets */,
 				F3D366C725B3847200B115C1 /* Info.plist */,
 				F3D366C425B3847200B115C1 /* Preview Content */,
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3909B0B25B8AD060066B1D0 /* Movies.swift in Sources */,
 				F3D366C125B3846C00B115C1 /* ContentView.swift in Sources */,
 				F3D366ED25B3849E00B115C1 /* Data.swift in Sources */,
 				F3D366BF25B3846C00B115C1 /* APIRequestsApp.swift in Sources */,

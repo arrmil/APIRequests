@@ -9,20 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var api = API()
-    
     var body: some View {
-        NavigationView {
-            ScrollView {
-                ForEach(api.programme) { program in
-                    VStack {
-                        if(program.title_original != "") {
-                            Text(program.title_original + ": \(program.year)")
-                        }
-                    }
-                }
-            }
+        ForEach(api.movies) { movie in
+            Text(movie.imdbRating)
         }
     }
+//    @ObservedObject var api = API()
+//
+//    var body: some View {
+//        NavigationView {
+//            ScrollView {
+//                ForEach(api.programme) { program in
+//                    VStack {
+//                        if(program.title_original != "") {
+//                            Text(program.title_original + ": \(program.year)")
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 
 
