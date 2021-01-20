@@ -42,7 +42,6 @@ class API: ObservableObject {
     
     init() {
         requestProgram()
-        requestMovieRating()
     }
     
     func requestProgram() {
@@ -55,27 +54,30 @@ class API: ObservableObject {
             let channel = try!JSONDecoder().decode(Channel.self, from: data!)
             DispatchQueue.main.async {
                 self.programme = channel.schedule.programme
+                self.requestMovieRating()
             }
         }
         .resume()
     }
     
     func requestMovieRating() {
-            let testmovie = self.programme[0].title_original
-            let testyear = self.programme[0].year
-            guard let url = URL(string: "http://www.omdbapi.com/?apikey=1ecc14c6&t=\(testmovie)&y=\(testyear)") else {
-                print("MOVIE URL NOT FOUND")
-                return
+        let testmovie = self.programme[0].title_original
+        let testyear = self.programme[0].year
+        let url = "https://www.omdbapi.com/?apikey=1ecc14c6&t=\(testmovie)&y=\(testyear)"
+        let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        guard let urlEndPoint = URL(string: urlString!) else {
+            print("MOVIE URL NOT FOUND")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: urlEndPoint) { (data, _, _) in
+            let movieDetails = try!JSONDecoder().decode(MovieDetails.self, from: data!)
+            DispatchQueue.main.async {
+                self.movies.append(movieDetails)
             }
             
-            URLSession.shared.dataTask(with: url) { (data, _, _) in
-                let movieDetails = try!JSONDecoder().decode([MovieDetails].self, from: data!)
-                DispatchQueue.main.async {
-                    self.movies = movieDetails
-                }
-                
-            }
-            .resume()
+        }
+        .resume()
         
         
     }
