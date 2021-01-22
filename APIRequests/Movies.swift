@@ -11,7 +11,11 @@ struct Movies: View {
     @ObservedObject var api = API()
     var body: some View {
         ForEach(api.movies) { movie in
-            Text(movie.imdbRating)
+            HStack {
+                Text(movie.Title)
+                Spacer()
+                Text(movie.imdbRating)
+            }
         }
     }
 }
