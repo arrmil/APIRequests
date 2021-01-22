@@ -10,11 +10,13 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var api = API()
     var body: some View {
-        ForEach(api.movies) { movie in
-            HStack {
-                Text(movie.Title)
-                Spacer()
-                Text(movie.imdbRating)
+        ForEach(api.movies, id: \.self) { movie in
+            if(movie.Title != "") {
+                HStack {
+                    Text(movie.Title)
+                    Spacer()
+                    Text(movie.imdbRating)
+                }
             }
         }
     }

@@ -10,7 +10,7 @@ import SwiftUI
 struct Movies: View {
     @ObservedObject var api = API()
     var body: some View {
-        ForEach(api.movies) { movie in
+        ForEach(api.movies, id: \.self) { movie in
             HStack {
                 Text(movie.Title)
                 Spacer()
