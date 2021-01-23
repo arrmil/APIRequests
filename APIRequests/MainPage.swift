@@ -13,7 +13,9 @@ struct MainPage: View {
             NavigationView {
                 ScrollView {
                     VStack(spacing: 20) {
-                        ChannelSquare(channelName: "TV", imageName: "rsz_tv3", imageColor: Color.green, spacing: -5)
+                        NavigationLink(destination: Movies()) {
+                            ChannelSquare(channelName: "TV", imageName: "rsz_tv3", imageColor: Color.green, spacing: -5)
+                        }
                         ChannelSquare(channelName: "LNK", imageName: "lnk", imageColor: Color.red, spacing: 10)
                         ChannelSquare(channelName: "TV6", imageName: "rsz_tv6", imageColor: Color.blue, spacing: 10)
                         ChannelSquare(channelName: "lrt", imageName: "rsz_lrt", imageColor: Color.gray, spacing: 10)

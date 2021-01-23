@@ -26,12 +26,15 @@ struct Programme: Codable, Hashable, Identifiable {
     var title: String
     var title_original: String
     var year: Int
+    var start: String
 }
 
 struct MovieDetails: Codable, Hashable {
 //    let id = UUID()
     var Title: String
     var imdbRating: String
+    var Poster: String
+    var start: String?
 }
 
 
@@ -93,9 +96,9 @@ class API: ObservableObject {
 
             URLSession.shared.dataTask(with: urlEndPoint) { (data, _, error) in
                 if let data = data {
-                    let movieDetails = try?JSONDecoder().decode(MovieDetails.self, from: data)
+                    var movieDetails = try?JSONDecoder().decode(MovieDetails.self, from: data)
                     DispatchQueue.main.async {
-                        self.movies.append(movieDetails ?? MovieDetails.init(Title: "", imdbRating: ""))
+                        self.movies.append(movieDetails ?? MovieDetails.init(Title: "", imdbRating: "", Poster: "", start: ""))
                         let mySet = Set<MovieDetails>(self.movies)
                         self.movies = Array(mySet)
                     }
@@ -106,6 +109,3 @@ class API: ObservableObject {
         }
     }
 }
-
-
-//KingFisher library to be able to use posters url inside Image() ?

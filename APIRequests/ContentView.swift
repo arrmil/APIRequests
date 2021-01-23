@@ -24,21 +24,6 @@ struct ContentView: View {
             }
         }
     }
-//    @ObservedObject var api = API()
-//
-//    var body: some View {
-//        NavigationView {
-//            ScrollView {
-//                ForEach(api.programme) { program in
-//                    VStack {
-//                        if(program.title_original != "") {
-//                            Text(program.title_original + ": \(program.year)")
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
 }
 
 
