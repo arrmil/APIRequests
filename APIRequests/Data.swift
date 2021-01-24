@@ -35,6 +35,7 @@ struct MovieDetails: Codable, Hashable {
     var imdbRating: String
     var Poster: String
     var start: String?
+    var Runtime: String
 }
 
 
@@ -96,9 +97,9 @@ class API: ObservableObject {
 
             URLSession.shared.dataTask(with: urlEndPoint) { (data, _, error) in
                 if let data = data {
-                    var movieDetails = try?JSONDecoder().decode(MovieDetails.self, from: data)
+                    let movieDetails = try?JSONDecoder().decode(MovieDetails.self, from: data)
                     DispatchQueue.main.async {
-                        self.movies.append(movieDetails ?? MovieDetails.init(Title: "", imdbRating: "", Poster: "", start: ""))
+                        self.movies.append(movieDetails ?? MovieDetails.init(Title: "", imdbRating: "", Poster: "", start: "", Runtime: ""))
                         let mySet = Set<MovieDetails>(self.movies)
                         self.movies = Array(mySet)
                     }
