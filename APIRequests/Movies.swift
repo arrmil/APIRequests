@@ -10,13 +10,47 @@ import Kingfisher
 
 struct Movies: View {
     @ObservedObject var api = API()
+    @State private var date = Date()
+    @State private var selectedDateText: String = "Date"
+    
+    private var selectedDate: Binding<Date> {
+      Binding<Date>(get: { self.date}, set : {
+          self.date = $0
+          self.setDateString()
+      })
+    }
+    
+    private func setDateString() {
+      let formatter = DateFormatter()
+      formatter.dateFormat = "dd-MM-yyyy"
+
+      self.selectedDateText = formatter.string(from: self.date)
+    }
+    
+    var closedRange: ClosedRange<Date> {
+        let zeroDays = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
+        let sevenDays = Calendar.current.date(byAdding: .day, value: 7, to: Date())!
+        
+        return zeroDays...sevenDays
+    }
     
     var body: some View {
-        
         NavigationView {
             ScrollView {
+                VStack {
+                    Text("Pasirinkite diena")
+                        DatePicker("Pasirinkite diena", selection: selectedDate, in: closedRange, displayedComponents: .date)
+                            .labelsHidden()
+                            .background(Color.red)
+                            .cornerRadius(5.0)
+                            .padding(.bottom)
+                            .onChange(of: selectedDateText, perform: { value in
+                                api.requestProgram(Date: value)
+                            })
+                    Text("Pasirinkta diena: \(selectedDateText)")
+                }
                 ForEach(api.movies.sorted(by: { $0.imdbRating > $1.imdbRating }), id: \.self) { movie in
-                    if(movie.Title != "") {
+                    if(movie.Title != "" && movie.imdbRating != "N/A") {
                         MovieBox(MovieTitle: movie.Title, MoviePoster: movie.Poster, MovieIMDB: movie.imdbRating)
                     }
                 }

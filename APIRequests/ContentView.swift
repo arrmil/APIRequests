@@ -9,19 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var api = API()
+    @State private var date = Date()
     var body: some View {
         NavigationView {
-            VStack {
-                ForEach(api.movies.sorted(by: { $0.imdbRating > $1.imdbRating }), id: \.self) { movie in
-                    if(movie.Title != "") {
-                        HStack {
-                            Text(movie.Title)
-                            Spacer()
-                            Text(movie.imdbRating)
-                        }
-                    }
-                }
-            }
+            DatePicker("Pasirinkite diena", selection: $date, displayedComponents: .date)
+                .labelsHidden()
+                .background(Color.red)
+                .cornerRadius(5.0)
+                .padding(.bottom)
+//            VStack {
+//                ForEach(api.movies.sorted(by: { $0.imdbRating > $1.imdbRating }), id: \.self) { movie in
+//                    if(movie.Title != "") {
+//                        HStack {
+//                            Text(movie.Title)
+//                            Spacer()
+//                            Text(movie.imdbRating)
+//                        }
+//                    }
+//                }
+//            }
         }
     }
 }

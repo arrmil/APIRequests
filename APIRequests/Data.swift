@@ -45,11 +45,13 @@ class API: ObservableObject {
     @Published var movies = [MovieDetails]()
     
     init() {
-        requestProgram()
+//        requestProgram()
     }
     
-    func requestProgram() {
-        guard let url = URL(string: "https://www.tv24.lt/programme/listing/none/18-01-2021?filter=channel&subslug=tv3-2") else {
+    func requestProgram(Date: String) {
+        self.movies = [MovieDetails]()
+        //"https://www.tv24.lt/programme/listing/none/18-01-2021?filter=channel&subslug=tv3-2"
+        guard let url = URL(string: "https://www.tv24.lt/programme/listing/none/\(Date)?filter=channel&subslug=tv3-2") else {
             print("URL NOT FOUND")
             return
         }
