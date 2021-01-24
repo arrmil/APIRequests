@@ -13,6 +13,7 @@ struct Movies: View {
     @State private var date = Date()
     @State private var selectedDateText: String = "Date"
     
+    //Stuff to learn, good way to change date to formatted date string
     private var selectedDate: Binding<Date> {
       Binding<Date>(get: { self.date}, set : {
           self.date = $0
@@ -21,12 +22,14 @@ struct Movies: View {
     }
     
     private func setDateString() {
+        //typical date formatting stuff
       let formatter = DateFormatter()
       formatter.dateFormat = "dd-MM-yyyy"
-
+        //String variable to assign formatted date
       self.selectedDateText = formatter.string(from: self.date)
     }
     
+    //Allowing to select only upcoming 7 days, might change this if api support other days
     var closedRange: ClosedRange<Date> {
         let zeroDays = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
         let sevenDays = Calendar.current.date(byAdding: .day, value: 7, to: Date())!
@@ -84,7 +87,7 @@ struct MovieBox: View {
 //                        .scaledToFit()
                         .frame(width: 200, height: 200)
                         .cornerRadius(5.0)
-                        .background(Color.blue)
+                        .background(Color.gray)
                         .padding()
                     Spacer()
                     Text(MovieIMDB)
